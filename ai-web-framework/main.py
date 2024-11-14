@@ -44,5 +44,18 @@ def state_list():
     data = {'states' : dict(d.get('message')).get('content').split('\n')}
     response = jsonify(data)
     response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+
+@app.route("/cityList", methods = ['GET'])
+def city_list():
+    state = request.args.get('state')
+    prompt = 'No other text, only cities in the ' + state + ' in alphabetic order'
+    value = client.chat.completions.create(messages=[{'role': 'system', 'content': prompt}],
+                                           model='gpt-4o-mini')
+    choices = value.to_dict().get("choices")[0]
+    d = dict(choices)
+    data = {'cities' : dict(d.get('message')).get('content').split('\n')}
+    response = jsonify(data)
+    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    return response
     return response
 
