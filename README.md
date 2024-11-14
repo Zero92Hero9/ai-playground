@@ -1,3 +1,4 @@
 # ai-playground
 
-1) Create UI components in react using OpenAI api. For e.g. construct the drop down components like country list by prompting the language models instead of fetching from an in-memory db, hard-coding or any other database.
+1) ai-web-framework: API for fetching data for UI components using OpenAI api. For e.g. countryList fetches list of countries using appropriate prompt.
+2) discovery-workspace: Classification of data using AI, Similarity search using VertexAI Api
